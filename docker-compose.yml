@@ -4,6 +4,10 @@ services:
   app:
     build:
       context: .
+      args:
+      - DEBUG_ARG=True
+      - ALLOWED_HOSTS_ARG=127.0.0.1,localhost
+      - SECRET_KEY_ARG=CHAVENAOSEGURA
     ports:
       - 8000:8000
     tty: true

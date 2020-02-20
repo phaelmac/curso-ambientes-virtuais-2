@@ -30,6 +30,9 @@ COPY ./src /src
 RUN pip install pipenv && \
     pipenv install --system --ignore-pipfile --deploy
 
+ADD https://github.com/krallin/tini/releases/download/v0.10.0/tini /tini
+RUN chmod +x /tini
+
 RUN useradd -ms /bin/bash user
 
 USER user

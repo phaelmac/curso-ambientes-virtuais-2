@@ -1,0 +1,14 @@
+### DEBUGANDO NO DOCKER ###
+1 - Instalar a lib ipdb
+2 - Colocar o breakipoint em alguma parte do código com o comando:
+    - import ipdb; ipdb.set_trace()
+2 - Rodar a app expondo a porta: docker-compose run --service-port app
+3 - Comando n passa para a proxima linha
+4 - Comando c passa para o próximo breakpoint
+
+### RDOANDO MAIS DE UM COMANDO NO DOCKER COMPOSE COM O TINI ###
+1 - Alterar o "command" do docker-compse para executar o tini
+2 - Instalar o tini, seguir doc: https://github.com/krallin/tini
+3 - Criar o script de start.sh e seus arquivos sh dependentes
+4 - Dar permissão de execução à esses arquivos: chmod +x start-app.sh migrations.sh start.sh
+5 - docker-compose up --build

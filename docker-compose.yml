@@ -1,12 +1,28 @@
-version: '3.7'
+version: '3'
 
 services:
+  db:
+    image: postgres:10-alpine
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=senhadanasa
   app:
+    depends_on:
+      - db
     build:
       context: .
+      args:
+        - DEBUG_ARG=true
+        - ALLOWED_HOSTS_ARG=127.0.0.1,localhost
+        - SECRET_KEY_ARG=CHAVENAOSEGURA
+        - USER_ARG=postgres
+        - PASSWORD_ARG=senhadanasa
+        - HOST_ARG=db
+        - DBNAME_ARG=app
     ports:
       - 8000:8000
     tty: true
-    command: python manage.py runserver 0.0.0.0:8000
+    command: ["/tini", "--", "./start.sh"]
     volumes:
       - ./src:/src

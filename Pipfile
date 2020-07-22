@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+python-decouple = ">=3.1"
+dj-database-url = ">=0.5.0"
+dj-static = ">=0.0.6"
+psycopg2 = "==2.7.7"
+Django = "<2.3.0,>=2.2.0"
+#ipdb = "*"
+
+[requires]
+python_version = "3.7"
